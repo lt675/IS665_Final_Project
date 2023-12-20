@@ -1,2 +1,2 @@
-The Accuracy score for the binary classification model is  79.17%
-The out of bag score for the binary classification model is  79.17%
+The Accuracy score for the binary classification model is 79.17%
+The out of bag score for the binary classification model is 79.54%

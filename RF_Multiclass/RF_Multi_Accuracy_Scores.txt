@@ -1,2 +1,2 @@
-The Accuracy score for the multiclass model is  66.46%
-The out of bag score for the multiclass model is  66.46%
+The Accuracy score for the multiclass model is 66.46%
+The out of bag score for the multiclass model is 65.68%

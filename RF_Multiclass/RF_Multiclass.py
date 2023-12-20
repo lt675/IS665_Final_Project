@@ -36,8 +36,8 @@ y_pred_test = rf2.predict(X_test)
 Acc = (accuracy_score(y_test, y_pred_test))
 obscore = rf2.oob_score_
 f = open('RF_Multi_Accuracy_Scores.txt', 'w+')
-print('The Accuracy score for the multiclass model is ', format(Acc, '.2%'), file=f)
-print('The out of bag score for the multiclass model is ', format(Acc, '.2%'), file=f)
+print('The Accuracy score for the multiclass model is', format(Acc, '.2%'), file=f)
+print('The out of bag score for the multiclass model is', format(obscore, '.2%'), file=f)
 f.close()
 
 # Get and reshape confusion matrix data
