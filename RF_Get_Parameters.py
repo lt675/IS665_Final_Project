@@ -38,6 +38,17 @@ print(classifier_rf.oob_score_)
 # Show current parameters
 print(classifier_rf.get_params())
 
+'''
+print(classifier_rf.oob_score_)
+0.6863270777479893
+
+print(classifier_rf.get_params())
+{'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': None,
+ 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0,
+  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100,
+   'n_jobs': -1, 'oob_score': True, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+'''
+
 # Hyperparameter tuning
 rf = RandomForestClassifier(random_state=42, n_jobs=-1, oob_score=True)
 
@@ -55,6 +66,10 @@ grid_search = GridSearchCV(estimator=rf,
                            cv=4,
                            n_jobs=-1, verbose=3, scoring="accuracy")
 
+'''Fitting 4 folds for each of 8400 candidates, totalling 33600 fits
+This took a long time to compile. In the future, prune the parameters,
+ lower the cv, or get a better computer'''
+
 grid_search.fit(X_train, y_train)
 
 print(grid_search.best_score_)
@@ -65,12 +80,17 @@ print(rf_best)
 # Show current parameters
 print(rf_best.get_params())
 
-# 0.6720718125960061
-# RandomForestClassifier(max_depth=40, n_estimators=30, n_jobs=-1, oob_score=True,
-#                        random_state=42)
-# {'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 40,
-#  'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0,
-#  'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 30,
-#  'n_jobs': -1, 'oob_score': True, 'random_state': 42, 'verbose': 0, 'warm_start': False}
-#
-# Process finished with exit code 0
+'''#Below are the results from the Hyperparameter Tuning
+
+print(grid_search.best_score_)
+0.6720718125960061
+ 
+print(rf_best)
+RandomForestClassifier(max_depth=40, n_estimators=30, n_jobs=-1, oob_score=True,
+                        random_state=42)
+
+print(rf_best.get_params())
+{'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': 40,
+'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0,
+'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 30,
+'n_jobs': -1, 'oob_score': True, 'random_state': 42, 'verbose': 0, 'warm_start': False}'''

@@ -1,0 +1,2 @@
+The Accuracy score for the multiclass model with outlier removal is  64.68%
+The out of bag score for the multiclass model with outlier removal is  64.68%
