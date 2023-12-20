@@ -66,7 +66,7 @@ grid_search = GridSearchCV(estimator=rf,
                            cv=4,
                            n_jobs=-1, verbose=3, scoring="accuracy")
 
-'''Fitting 4 folds for each of 8400 candidates, totalling 33600 fits
+'''Fitting 4 folds for each of 8400 candidates, totaling 33600 fits
 This took a long time to compile. In the future, prune the parameters,
  lower the cv, or get a better computer'''
 
