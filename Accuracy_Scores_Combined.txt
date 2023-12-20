@@ -1,0 +1,6 @@
+The Accuracy score for the binary classification model is 79.17%
+The out of bag score for the binary classification model is 79.54%
+The Accuracy score for the multiclass model is 66.46%
+The out of bag score for the multiclass model is 65.68%
+The Accuracy score for the multiclass model with outlier removal is 64.68%
+The out of bag score for the multiclass model with outlier removal is 68.37%
