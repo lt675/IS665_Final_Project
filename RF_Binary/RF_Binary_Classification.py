@@ -58,11 +58,16 @@ f.close()
 matrix = confusion_matrix(y_test, y_pred_test)
 matrix = matrix.astype('float') / matrix.sum(axis=1)[:, np.newaxis]
 
-# Build the plot
-plt.figure(figsize=(5, 5))
+# Create .csv version of confusion matrix
+class_names = ['< 6', '>= 6']
+mcsv = pandas.DataFrame(matrix, index=class_names, columns=class_names).transpose()
+mcsv.to_csv("RF_Binary_Confusion_Matrix.csv")
+
+# Build a plot for a confusion matrix heatmap
+plt.figure(figsize=(7, 7))
 sns.set(font_scale=1)
 sns.color_palette("colorblind", as_cmap=True)
-sns.heatmap(matrix, center=0, annot=True, annot_kws={'size': 10},
+sns.heatmap(mcsv, center=0, annot=True, annot_kws={'size': 10},
             linewidths=0.2)
 
 # Add labels to the plot
@@ -70,7 +75,7 @@ plt.xticks(rotation=0)
 plt.yticks(rotation=0)
 plt.xlabel('Predicted label')
 plt.ylabel('True label')
-plt.title('Confusion Matrix for Binary, \n Classification Random Forest Model\n')
+plt.title('Confusion Matrix for Binary, \nClassification Random Forest Model\n')
 
 # Save the Heatmap
 plt.savefig('RF_Binary_CM_Heat.jpeg')

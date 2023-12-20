@@ -44,21 +44,25 @@ f.close()
 matrix = confusion_matrix(y_test, y_pred_test)
 matrix = matrix.astype('float') / matrix.sum(axis=1)[:, np.newaxis]
 
-# Build the plot
+# Create .csv version of confusion matrix
+class_names = ['3', '4', '5', '6', '7', '8']
+mcsv = pandas.DataFrame(matrix, index=class_names, columns=class_names).transpose()
+mcsv.to_csv("RF_Multi_Confusion_Matrix.csv")
+
+
+# Build a plot for a confusion matrix heatmap
 plt.figure(figsize=(7, 7))
 sns.set(font_scale=1)
 sns.color_palette("colorblind", as_cmap=True)
-sns.heatmap(matrix, center=0, annot=True, annot_kws={'size': 10},
+sns.heatmap(mcsv, center=0, annot=True, annot_kws={'size': 10},
             linewidths=0.2)
 
 # Add labels to the plot
-class_names = ['3', '4', '5', '6', '7', '8']
-tick_marks = np.arange(len(class_names))
-plt.xticks(tick_marks, class_names)
-plt.yticks(tick_marks, class_names)
+plt.xticks(rotation=0)
+plt.yticks(rotation=0)
 plt.xlabel('Predicted label')
 plt.ylabel('True label')
-plt.title('Confusion Matrix for \n Multiclass Random Forest Model\n')
+plt.title('Confusion Matrix for\n Multiclass Random Forest Model\n')
 
 #Save the Heatmap
 plt.savefig('RF_Multi_CM_Heat.jpeg')
